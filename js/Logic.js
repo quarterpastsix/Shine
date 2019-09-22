@@ -11,19 +11,21 @@ export class Game{
         let startbutton = document.createElement("Button");
         startbutton.innerText = "Connect and Start";
         startbutton.addEventListener("click",()=>{
-            this.socket = new WebSocket("ws://qpserving.ddns.net:8765");
+            console.log("test");
+            this.socket = new WebSocket("wss://qpserving.ddns.net:8765");
+            // this.socket = new WebSocket("wss://localhost:8765");
             this.socket.onopen = ()=>{
                 this.gameDiv.remove(startbutton);
                 this.socket.send("hi")
             };
             this.socket.onerror = (error) =>{
                 console.log("not connected");
-                console.log(error);
-                startbutton.disabled = true;
+                // console.log(error);
+                // startbutton.disabled = true;
             };
             this.socket.onclose = (event)=>{
                 console.log("close");
-                console.log(event)
+                // console.log(event)
             };
             this.socket.onmessage = (event) =>{
                 // console.log(event);
