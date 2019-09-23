@@ -11,9 +11,9 @@ export class Game{
         let startbutton = document.createElement("Button");
         startbutton.innerText = "Connect and Start";
         startbutton.addEventListener("click",()=>{
-            console.log("test");
-            this.socket = new WebSocket("wss://qpserving.ddns.net:8765");
-            // this.socket = new WebSocket("wss://localhost:8765");
+            console.log("button pressed");
+            // this.socket = new WebSocket("wss://qpserving.ddns.net:7777");
+            this.socket = new WebSocket("wss://127.0.0.1:7777");
             this.socket.onopen = ()=>{
                 this.gameDiv.remove(startbutton);
                 this.socket.send("hi")
@@ -46,7 +46,7 @@ export class Game{
     }
 
     start(){
-        console.log("hi")
+        // console.log("hi")
     }
 
 }
