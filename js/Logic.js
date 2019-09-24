@@ -12,11 +12,11 @@ export class Game{
         startbutton.innerText = "Connect and Start";
         startbutton.addEventListener("click",()=>{
             console.log("button pressed");
-            // this.socket = new WebSocket("wss://qpserving.ddns.net:7777");
-            this.socket = new WebSocket("wss://127.0.0.1:7777");
+            this.socket = new WebSocket("ws://qpserving.ddns.net:7777");
+            // this.socket = new WebSocket("ws://localhost:7777");
             this.socket.onopen = ()=>{
                 this.gameDiv.remove(startbutton);
-                this.socket.send("hi")
+                this.socket.send("hi \r\n test \r\n")
             };
             this.socket.onerror = (error) =>{
                 console.log("not connected");
@@ -36,7 +36,7 @@ export class Game{
 
         let canv = document.createElement("canvas");
         canv.width = window.innerWidth;
-        canv.height = window.innerheight;
+        canv.height = window.innerHeight;
 
         this.gameDiv.appendChild(startbutton);
         this.gameDiv.appendChild(canv);
